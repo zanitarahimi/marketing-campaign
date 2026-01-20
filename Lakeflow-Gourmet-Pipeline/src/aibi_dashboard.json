@@ -2,16 +2,16 @@
   "datasets": [
     {
       "name": "1375151d",
-      "displayName": "results",
+      "displayName": "campaign_results",
       "queryLines": [
-        "select * from daiwt_gourmet.virtual_event.flagship_stores"
+        "SELECT * FROM zanita_rahimi.marketing_campaigns.top_campaigns_with_ai"
       ]
     },
     {
       "name": "5b810f29",
-      "displayName": "franchises",
+      "displayName": "campaign_performance",
       "queryLines": [
-        "SELECT country, city, longitude, latitude, size FROM samples.bakehouse.sales_franchises"
+        "SELECT Industry, Country, City, engagement_score, clicks_per_dollar FROM zanita_rahimi.marketing_campaigns.campaign_performance"
       ]
     }
   ],
@@ -30,28 +30,36 @@
                   "datasetName": "1375151d",
                   "fields": [
                     {
-                      "name": "total_sales",
-                      "expression": "`total_sales`"
+                      "name": "CampaignName",
+                      "expression": "`CampaignName`"
                     },
                     {
-                      "name": "city",
-                      "expression": "`city`"
+                      "name": "Industry",
+                      "expression": "`Industry`"
                     },
                     {
-                      "name": "ingredient",
-                      "expression": "`ingredient`"
+                      "name": "Country",
+                      "expression": "`Country`"
                     },
                     {
-                      "name": "district",
-                      "expression": "`district`"
+                      "name": "City",
+                      "expression": "`City`"
                     },
                     {
-                      "name": "description",
-                      "expression": "`description`"
+                      "name": "engagement_score",
+                      "expression": "`engagement_score`"
                     },
                     {
-                      "name": "desc_es",
-                      "expression": "`desc_es`"
+                      "name": "clicks_per_dollar",
+                      "expression": "`clicks_per_dollar`"
+                    },
+                    {
+                      "name": "ai_generated_copy",
+                      "expression": "`ai_generated_copy`"
+                    },
+                    {
+                      "name": "ai_copy_es",
+                      "expression": "`ai_copy_es`"
                     },
                     {
                       "name": "sentiment",
@@ -68,8 +76,7 @@
               "encodings": {
                 "columns": [
                   {
-                    "fieldName": "total_sales",
-                    "numberFormat": "0",
+                    "fieldName": "CampaignName",
                     "booleanValues": [
                       "false",
                       "true"
@@ -82,21 +89,21 @@
                     "linkTextTemplate": "{{ @ }}",
                     "linkTitleTemplate": "{{ @ }}",
                     "linkOpenInNewTab": true,
-                    "type": "integer",
-                    "displayAs": "number",
+                    "type": "string",
+                    "displayAs": "string",
                     "visible": true,
                     "order": 0,
-                    "title": "Sales",
+                    "title": "Campaign",
                     "allowSearch": false,
-                    "alignContent": "right",
+                    "alignContent": "left",
                     "allowHTML": false,
                     "highlightLinks": false,
                     "useMonospaceFont": false,
                     "preserveWhitespace": false,
-                    "displayName": "total_sales"
+                    "displayName": "CampaignName"
                   },
                   {
-                    "fieldName": "city",
+                    "fieldName": "Industry",
                     "booleanValues": [
                       "false",
                       "true"
@@ -113,17 +120,44 @@
                     "displayAs": "string",
                     "visible": true,
                     "order": 1,
-                    "title": "City",
+                    "title": "Industry",
                     "allowSearch": false,
                     "alignContent": "left",
                     "allowHTML": false,
                     "highlightLinks": false,
                     "useMonospaceFont": false,
                     "preserveWhitespace": false,
-                    "displayName": "city"
+                    "displayName": "Industry"
                   },
                   {
-                    "fieldName": "ingredient",
+                    "fieldName": "Country",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "string",
+                    "displayAs": "string",
+                    "visible": true,
+                    "order": 2,
+                    "title": "Country",
+                    "allowSearch": false,
+                    "alignContent": "left",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false,
+                    "displayName": "Country"
+                  },
+                  {
+                    "fieldName": "City",
                     "booleanValues": [
                       "false",
                       "true"
@@ -140,17 +174,18 @@
                     "displayAs": "string",
                     "visible": true,
                     "order": 3,
-                    "title": "Local Ingredient",
+                    "title": "City",
                     "allowSearch": false,
                     "alignContent": "left",
                     "allowHTML": false,
                     "highlightLinks": false,
                     "useMonospaceFont": false,
                     "preserveWhitespace": false,
-                    "displayName": "ingredient"
+                    "displayName": "City"
                   },
                   {
-                    "fieldName": "district",
+                    "fieldName": "engagement_score",
+                    "numberFormat": "0.00",
                     "booleanValues": [
                       "false",
                       "true"
@@ -163,21 +198,22 @@
                     "linkTextTemplate": "{{ @ }}",
                     "linkTitleTemplate": "{{ @ }}",
                     "linkOpenInNewTab": true,
-                    "type": "string",
-                    "displayAs": "string",
+                    "type": "double",
+                    "displayAs": "number",
                     "visible": true,
                     "order": 4,
-                    "title": "District",
+                    "title": "Engagement Score",
                     "allowSearch": false,
-                    "alignContent": "left",
+                    "alignContent": "right",
                     "allowHTML": false,
                     "highlightLinks": false,
                     "useMonospaceFont": false,
                     "preserveWhitespace": false,
-                    "displayName": "district"
+                    "displayName": "engagement_score"
                   },
                   {
-                    "fieldName": "description",
+                    "fieldName": "clicks_per_dollar",
+                    "numberFormat": "0.00",
                     "booleanValues": [
                       "false",
                       "true"
@@ -190,21 +226,21 @@
                     "linkTextTemplate": "{{ @ }}",
                     "linkTitleTemplate": "{{ @ }}",
                     "linkOpenInNewTab": true,
-                    "type": "string",
-                    "displayAs": "string",
+                    "type": "double",
+                    "displayAs": "number",
                     "visible": true,
                     "order": 5,
-                    "title": "LLM model new recipe",
+                    "title": "ROI (Clicks/$)",
                     "allowSearch": false,
-                    "alignContent": "left",
+                    "alignContent": "right",
                     "allowHTML": false,
                     "highlightLinks": false,
                     "useMonospaceFont": false,
                     "preserveWhitespace": false,
-                    "displayName": "description"
+                    "displayName": "clicks_per_dollar"
                   },
                   {
-                    "fieldName": "desc_es",
+                    "fieldName": "ai_generated_copy",
                     "booleanValues": [
                       "false",
                       "true"
@@ -221,14 +257,41 @@
                     "displayAs": "string",
                     "visible": true,
                     "order": 6,
-                    "title": "in Spanish",
+                    "title": "AI-Generated Campaign Copy",
                     "allowSearch": false,
                     "alignContent": "left",
                     "allowHTML": false,
                     "highlightLinks": false,
                     "useMonospaceFont": false,
                     "preserveWhitespace": false,
-                    "displayName": "desc_es"
+                    "displayName": "ai_generated_copy"
+                  },
+                  {
+                    "fieldName": "ai_copy_es",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "string",
+                    "displayAs": "string",
+                    "visible": true,
+                    "order": 7,
+                    "title": "Spanish Translation",
+                    "allowSearch": false,
+                    "alignContent": "left",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false,
+                    "displayName": "ai_copy_es"
                   },
                   {
                     "fieldName": "sentiment",
@@ -247,8 +310,8 @@
                     "type": "string",
                     "displayAs": "string",
                     "visible": true,
-                    "order": 7,
-                    "title": "sentiment",
+                    "order": 8,
+                    "title": "Sentiment",
                     "allowSearch": false,
                     "alignContent": "left",
                     "allowHTML": false,
@@ -259,33 +322,7 @@
                   }
                 ]
               },
-              "invisibleColumns": [
-                {
-                  "booleanValues": [
-                    "false",
-                    "true"
-                  ],
-                  "imageUrlTemplate": "{{ @ }}",
-                  "imageTitleTemplate": "{{ @ }}",
-                  "imageWidth": "",
-                  "imageHeight": "",
-                  "linkUrlTemplate": "{{ @ }}",
-                  "linkTextTemplate": "{{ @ }}",
-                  "linkTitleTemplate": "{{ @ }}",
-                  "linkOpenInNewTab": true,
-                  "name": "country",
-                  "type": "string",
-                  "displayAs": "string",
-                  "order": 2,
-                  "title": "Country",
-                  "allowSearch": false,
-                  "alignContent": "left",
-                  "allowHTML": false,
-                  "highlightLinks": false,
-                  "useMonospaceFont": false,
-                  "preserveWhitespace": false
-                }
-              ],
+              "invisibleColumns": [],
               "allowHTMLByDefault": false,
               "itemsPerPage": 25,
               "paginationSize": "default",
@@ -293,7 +330,7 @@
               "withRowNumber": true,
               "frame": {
                 "showTitle": true,
-                "title": "Top Selling Stores + new Food and new Marketing Campaigns"
+                "title": "Top Performing Campaigns + AI-Generated Personalized Marketing Copy"
               }
             }
           },
@@ -314,12 +351,12 @@
                   "datasetName": "1375151d",
                   "fields": [
                     {
-                      "name": "sum(total_sales)",
-                      "expression": "SUM(`total_sales`)"
+                      "name": "sum(engagement_score)",
+                      "expression": "SUM(`engagement_score`)"
                     },
                     {
-                      "name": "city",
-                      "expression": "`city`"
+                      "name": "Industry",
+                      "expression": "`Industry`"
                     }
                   ],
                   "disaggregated": false
@@ -331,22 +368,26 @@
               "widgetType": "pie",
               "encodings": {
                 "angle": {
-                  "fieldName": "sum(total_sales)",
+                  "fieldName": "sum(engagement_score)",
                   "scale": {
                     "type": "quantitative"
                   },
-                  "displayName": "Sum of total_sales"
+                  "displayName": "Total Engagement Score"
                 },
                 "color": {
-                  "fieldName": "city",
+                  "fieldName": "Industry",
                   "scale": {
                     "type": "categorical"
                   },
-                  "displayName": "city"
+                  "displayName": "Industry"
                 },
                 "label": {
                   "show": true
                 }
+              },
+              "frame": {
+                "title": "Engagement Score by Industry",
+                "showTitle": true
               }
             }
           },
@@ -364,49 +405,42 @@
               {
                 "name": "main_query",
                 "query": {
-                  "datasetName": "5b810f29",
+                  "datasetName": "1375151d",
                   "fields": [
                     {
-                      "name": "size",
-                      "expression": "`size`"
+                      "name": "avg(clicks_per_dollar)",
+                      "expression": "AVG(`clicks_per_dollar`)"
                     },
                     {
-                      "name": "latitude",
-                      "expression": "`latitude`"
-                    },
-                    {
-                      "name": "longitude",
-                      "expression": "`longitude`"
+                      "name": "Country",
+                      "expression": "`Country`"
                     }
                   ],
-                  "disaggregated": true
+                  "disaggregated": false
                 }
               }
             ],
             "spec": {
-              "version": 2,
-              "widgetType": "symbol-map",
+              "version": 3,
+              "widgetType": "bar",
               "encodings": {
-                "coordinates": {
-                  "latitude": {
-                    "fieldName": "latitude",
-                    "displayName": "latitude"
-                  },
-                  "longitude": {
-                    "fieldName": "longitude",
-                    "displayName": "longitude"
-                  }
-                },
-                "color": {
-                  "fieldName": "size",
+                "x": {
+                  "fieldName": "Country",
                   "scale": {
                     "type": "categorical"
                   },
-                  "displayName": "size"
+                  "displayName": "Country"
+                },
+                "y": {
+                  "fieldName": "avg(clicks_per_dollar)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Avg ROI (Clicks/$)"
                 }
               },
               "frame": {
-                "title": "Gourmet-Pipeline Locations Worldwide / Size of Shop",
+                "title": "Campaign ROI by Country",
                 "showTitle": true,
                 "showDescription": false
               }
@@ -424,7 +458,11 @@
             "name": "efe03611",
             "multilineTextboxSpec": {
               "lines": [
-                "![Gourmet Pipe Corp](https://raw.githubusercontent.com/databricks/tmm/refs/heads/main/Lakeflow-Gourmet-Pipeline/misc/gourmet_header.jpg)"
+                "# Marketing Campaign Analytics Dashboard",
+                "",
+                "Real-time campaign performance tracking with AI-generated personalized content across industries and geographies.",
+                "",
+                "**Powered by:** Databricks Lakeflow + Claude 3.7 Sonnet"
               ]
             }
           },
