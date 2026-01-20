@@ -1,2 +1,0 @@
-CREATE MATERIALIZED VIEW lf_connect_campaigns AS
-SELECT 1;
