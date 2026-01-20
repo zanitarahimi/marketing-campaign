@@ -311,7 +311,7 @@
                     "displayAs": "string",
                     "visible": true,
                     "order": 8,
-                    "title": "Sentiment",
+                    "title": "Customer Feedback (Sentiment)",
                     "allowSearch": false,
                     "alignContent": "left",
                     "allowHTML": false,
