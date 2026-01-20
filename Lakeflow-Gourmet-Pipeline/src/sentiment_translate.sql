@@ -8,15 +8,15 @@ SELECT
   CampaignId,
   COUNT(*) AS feedback_count,
   AVG(CASE 
-    WHEN LOWER(ai_analyze_sentiment(FeedbackText)) LIKE '%positive%' THEN 1
-    WHEN LOWER(ai_analyze_sentiment(FeedbackText)) LIKE '%negative%' THEN -1
+    WHEN LOWER(ai_analyze_sentiment(Feedbacks)) LIKE '%positive%' THEN 1
+    WHEN LOWER(ai_analyze_sentiment(Feedbacks)) LIKE '%negative%' THEN -1
     ELSE 0
   END) AS sentiment_score,
-  COLLECT_LIST(STRUCT(FeedbackText, ai_analyze_sentiment(FeedbackText) AS sentiment)) AS feedbacks
+  COLLECT_LIST(STRUCT(Feedbacks, ai_analyze_sentiment(Feedbacks) AS sentiment)) AS feedback_details
 FROM
   raw_feedbacks
 WHERE
-  FeedbackText IS NOT NULL
+  Feedbacks IS NOT NULL
 GROUP BY CampaignId;
 
 -- Add translations and join with customer sentiment
