@@ -34,7 +34,7 @@ targets:
       source_linked_deployment: true  
     default: true
     variables:
-      schema_name: ${workspace.current_user.short_name}
+      schema_name: marketing_campaigns
  
 
 
