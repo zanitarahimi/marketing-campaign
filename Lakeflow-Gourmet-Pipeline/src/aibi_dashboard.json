@@ -257,7 +257,7 @@
                     "displayAs": "string",
                     "visible": true,
                     "order": 6,
-                    "title": "AI-Generated Campaign Copy",
+                    "title": "AI-Enhanced Copy (Future Use)",
                     "allowSearch": false,
                     "alignContent": "left",
                     "allowHTML": false,
@@ -311,7 +311,7 @@
                     "displayAs": "string",
                     "visible": true,
                     "order": 8,
-                    "title": "Customer Feedback (Sentiment)",
+                    "title": "Historical Customer Feedback",
                     "allowSearch": false,
                     "alignContent": "left",
                     "allowHTML": false,
@@ -330,7 +330,7 @@
               "withRowNumber": true,
               "frame": {
                 "showTitle": true,
-                "title": "Top Performing Campaigns + AI-Generated Personalized Marketing Copy"
+                "title": "Campaign Performance Analysis: Historical Results + AI-Enhanced Copy for Future Campaigns"
               }
             }
           },
