@@ -5,15 +5,15 @@
 variables:
   prod_warehouse_id:
     description: define prod warehouse id
-    default: 5834a7035a11c525
+    default: 30d6e63b35f828c5
 
   catalog_name:
     description: "Catalog name for the pipeline"
-    default: marketing_campaigns
+    default: zanita_rahimi
 
   schema_name:
     description: "Schema name for the pipeline"
-    default: ${workspace.current_user.short_name}
+    default: marketing_campaigns
 
 
 
