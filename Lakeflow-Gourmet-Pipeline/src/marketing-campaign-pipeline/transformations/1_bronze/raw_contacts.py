@@ -5,4 +5,4 @@ from pyspark import pipelines as dp
 @dp.expect_or_drop("ContactId needs to be set", "ContactId IS NOT NULL")
 @dp.expect_or_drop("ProspectId needs to be set", "ProspectId IS NOT NULL")
 def raw_contacts():
-    return spark.readStream.table("samples.bakehouse.raw_contacts")
+    return spark.readStream.table("zanita_rahimi.dbdemos_aibi_cme_marketing_campaign.raw_campaigns")

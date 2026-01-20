@@ -8,4 +8,4 @@ TBLPROPERTIES ("quality" = "bronze")
 COMMENT "Streaming table for prospect/company information"
 AS SELECT
   *
-FROM STREAM (samples.bakehouse.raw_prospects)
+FROM STREAM (zanita_rahimi.dbdemos_aibi_cme_marketing_campaign.raw_prospects)

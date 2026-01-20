@@ -8,4 +8,4 @@ TBLPROPERTIES ("quality" = "bronze")
 COMMENT "Streaming table for campaign events (sent, opened, clicked, etc.)"
 AS SELECT
   *
-FROM STREAM (samples.bakehouse.raw_events)
+FROM STREAM (zanita_rahimi.dbdemos_aibi_cme_marketing_campaign.raw_events)
