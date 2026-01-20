@@ -93,5 +93,3 @@ SELECT
   ) AS engagement_score,
   latest_event_date
 FROM campaign_by_industry_country
-WHERE
-  latest_event_date = (SELECT MAX(DATE(EventDate)) FROM raw_events)
