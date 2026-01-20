@@ -3,20 +3,31 @@ USE CATALOG {{my_catalog}};
 USE IDENTIFIER({{my_schema}});
 
 -- Add sentiment analysis from customer feedback
+-- First compute sentiment for each feedback, then aggregate
+CREATE OR REPLACE TEMPORARY VIEW feedback_with_sentiment AS
+SELECT
+  CampaignId,
+  Feedbacks,
+  ai_analyze_sentiment(Feedbacks) AS sentiment_analysis,
+  CASE 
+    WHEN LOWER(ai_analyze_sentiment(Feedbacks)) LIKE '%positive%' THEN 1
+    WHEN LOWER(ai_analyze_sentiment(Feedbacks)) LIKE '%negative%' THEN -1
+    ELSE 0
+  END AS sentiment_numeric
+FROM
+  raw_feedbacks
+WHERE
+  Feedbacks IS NOT NULL;
+
+-- Now aggregate the pre-computed sentiments
 CREATE OR REPLACE TABLE campaign_feedback_sentiment AS
 SELECT
   CampaignId,
   COUNT(*) AS feedback_count,
-  AVG(CASE 
-    WHEN LOWER(ai_analyze_sentiment(Feedbacks)) LIKE '%positive%' THEN 1
-    WHEN LOWER(ai_analyze_sentiment(Feedbacks)) LIKE '%negative%' THEN -1
-    ELSE 0
-  END) AS sentiment_score,
-  COLLECT_LIST(STRUCT(Feedbacks, ai_analyze_sentiment(Feedbacks) AS sentiment)) AS feedback_details
+  AVG(sentiment_numeric) AS sentiment_score,
+  COLLECT_LIST(STRUCT(Feedbacks, sentiment_analysis AS sentiment)) AS feedback_details
 FROM
-  raw_feedbacks
-WHERE
-  Feedbacks IS NOT NULL
+  feedback_with_sentiment
 GROUP BY CampaignId;
 
 -- Add translations and join with customer sentiment
