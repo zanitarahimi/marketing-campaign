@@ -22,6 +22,15 @@ WITH event_metrics AS (
   FROM raw_events e
   GROUP BY e.CampaignId, e.ContactId
 ),
+campaign_totals AS (
+  SELECT
+    c.CampaignId,
+    SUM(em.emails_sent) AS total_campaign_emails
+  FROM
+    raw_campaigns c
+    JOIN event_metrics em ON c.CampaignId = em.CampaignId
+  GROUP BY c.CampaignId
+),
 campaign_by_industry_country AS (
   SELECT
     c.CampaignId,
@@ -43,19 +52,22 @@ campaign_by_industry_country AS (
     SUM(em.clicks) AS clicks,
     SUM(em.spam_reports) AS spam_reports,
     SUM(em.unsubscribes) AS unsubscribes,
-    MAX(em.latest_event_date) AS latest_event_date
+    MAX(em.latest_event_date) AS latest_event_date,
+    -- Allocate cost proportionally based on emails sent to this segment
+    ROUND(c.Cost * (SUM(em.emails_sent) / NULLIF(ct.total_campaign_emails, 0)), 2) AS allocated_cost
   FROM
     raw_campaigns c
     JOIN event_metrics em ON c.CampaignId = em.CampaignId
-    JOIN raw_contacts ct ON em.ContactId = ct.ContactId
-    JOIN raw_prospects p ON ct.ProspectId = p.ProspectId
+    JOIN raw_contacts con ON em.ContactId = con.ContactId
+    JOIN raw_prospects p ON con.ProspectId = p.ProspectId
+    JOIN campaign_totals ct ON c.CampaignId = ct.CampaignId
   WHERE
     p.Industry IS NOT NULL 
     AND p.Country IS NOT NULL
   GROUP BY 
     c.CampaignId, c.CampaignName, c.CampaignDescription, 
     c.SubjectLine, c.Template, c.Cost, c.StartDate, c.EndDate,
-    p.Industry, p.Country, p.City
+    p.Industry, p.Country, p.City, ct.total_campaign_emails
 )
 SELECT
   CampaignId,
@@ -63,7 +75,7 @@ SELECT
   CampaignDescription,
   SubjectLine,
   Template,
-  Cost,
+  allocated_cost AS Cost,
   StartDate,
   EndDate,
   Industry,
@@ -82,13 +94,13 @@ SELECT
   ROUND(clicks * 100.0 / NULLIF(emails_sent, 0), 2) AS click_rate,
   ROUND(emails_delivered * 100.0 / NULLIF(emails_sent, 0), 2) AS delivery_rate,
   ROUND(spam_reports * 100.0 / NULLIF(emails_sent, 0), 2) AS spam_rate,
-  -- Calculate ROI metrics
-  ROUND(clicks / NULLIF(Cost, 0), 2) AS clicks_per_dollar,
-  -- Calculate engagement score (weighted metric)
+  -- Calculate ROI metrics (using allocated cost for this segment)
+  ROUND(clicks / NULLIF(allocated_cost, 0), 2) AS clicks_per_dollar,
+  -- Calculate engagement score (normalized: all metrics are now 0-100 scale)
   ROUND(
-    (ROUND(emails_opened * 100.0 / NULLIF(emails_sent, 0), 2) * 0.3) + 
-    (ROUND(clicks * 100.0 / NULLIF(emails_sent, 0), 2) * 0.5) + 
-    (ROUND(clicks / NULLIF(Cost, 0), 2) * 0.2), 
+    (ROUND(emails_opened * 100.0 / NULLIF(emails_sent, 0), 2) * 0.4) +  -- open_rate weight
+    (ROUND(clicks * 100.0 / NULLIF(emails_sent, 0), 2) * 0.4) +          -- click_rate weight
+    (ROUND(emails_delivered * 100.0 / NULLIF(emails_sent, 0), 2) * 0.2), -- delivery_rate weight
     2
   ) AS engagement_score,
   latest_event_date
