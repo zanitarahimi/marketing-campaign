@@ -1,0 +1,106 @@
+# yaml-language-server: $schema=../bundle_config_schema.json
+
+
+resources:
+  jobs:
+    marketing-campaign-workflow:
+      name: marketing-campaign-workflow
+      parameters:
+        - name: my_catalog
+          default: ${var.catalog_name}
+        - name: my_schema
+          default: ${var.schema_name}
+        - name: ai_enabled
+          default: "TRUE"
+          
+      tasks:
+        - task_key: lf-connect-campaigns
+          pipeline_task:
+            full_refresh: false 
+            pipeline_id: ${resources.pipelines.lf-connect-campaigns.id}
+          run_if: ALL_SUCCESS
+        - task_key: lf-connect-prospects
+          pipeline_task:
+            full_refresh: false 
+            pipeline_id: ${resources.pipelines.lf-connect-prospects.id}
+          run_if: ALL_SUCCESS
+        - task_key: lf-connect-feedback
+          pipeline_task:
+            full_refresh: false 
+            pipeline_id: ${resources.pipelines.lf-connect-feedback.id}
+          run_if: ALL_SUCCESS
+        - task_key: etl-pipeline
+          depends_on:
+            - task_key: lf-connect-campaigns
+            - task_key: lf-connect-prospects
+            - task_key: lf-connect-feedback
+          notification_settings: {}
+          pipeline_task:
+            full_refresh: true 
+            pipeline_id: ${resources.pipelines.marketing-campaign-pipeline.id}
+          webhook_notifications: {}
+          run_if: ALL_SUCCESS
+          email_notifications: {}
+        - task_key: is_AI_enabled
+          depends_on:
+            - task_key: etl-pipeline
+          email_notifications: {}
+          condition_task:
+            op: NOT_EQUAL
+            right: "FALSE"
+            left: ai_enabled
+          notification_settings: {}
+          run_if: ALL_SUCCESS
+          webhook_notifications: {}
+        - task_key: generate_campaign_copy_LLM
+          depends_on:
+            - task_key: is_AI_enabled
+              outcome: "true"
+          run_if: ALL_SUCCESS
+          sql_task:
+            file:
+              path: ../src/ai_query.sql
+            warehouse_id: ${var.prod_warehouse_id}
+        - task_key: sentiment_translate_ai_functions
+          depends_on:
+            - task_key: generate_campaign_copy_LLM
+          sql_task:
+            file:
+              path: ../src/sentiment_translate.sql
+            warehouse_id: ${var.prod_warehouse_id}
+        - task_key: email-exit_without_AI
+          depends_on:
+            - outcome: "false"
+              task_key: is_AI_enabled
+          notebook_task:
+            notebook_path: ../src/Exit_without_AI.py
+            source: WORKSPACE
+          run_if: ALL_SUCCESS
+        - task_key: update_downstream
+          depends_on:
+            - task_key: generate_campaign_copy_LLM
+          notebook_task:
+            source: WORKSPACE
+            notebook_path: ../src/Update_Downstream.py
+          run_if: ALL_SUCCESS
+          notification_settings: {}
+          email_notifications: {}
+          webhook_notifications: {}
+        - task_key: update_aibi_dashboard
+          depends_on:
+            - task_key: generate_campaign_copy_LLM
+          dashboard_task:
+            subscription: {}
+            warehouse_id: ${var.prod_warehouse_id}
+            dashboard_id: ${resources.dashboards.marketing_campaign_dashboard.id}
+      email_notifications:
+        on_failure:
+          - roland@databricks.de
+      webhook_notifications: {}
+      queue:
+        enabled: true
+      notification_settings: {}
+      max_concurrent_runs: 1
+      
+        
+        

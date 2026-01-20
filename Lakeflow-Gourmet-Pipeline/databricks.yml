@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=./bundle_config_schema.json
+
+# Marketing-Campaign-Pipeline
+
+variables:
+  prod_warehouse_id:
+    description: define prod warehouse id
+    default: 5834a7035a11c525
+
+  catalog_name:
+    description: "Catalog name for the pipeline"
+    default: marketing_campaigns
+
+  schema_name:
+    description: "Schema name for the pipeline"
+    default: ${workspace.current_user.short_name}
+
+
+
+
+bundle:
+  name: marketing-campaign-pipeline-dab
+
+include:
+  - resources/*.yml
+
+
+targets:
+
+  presenter:
+
+    mode: development
+    presets:
+      source_linked_deployment: true  
+    default: true
+    variables:
+      schema_name: ${workspace.current_user.short_name}
+ 
+
+
+
+# The 'dev' target, for development purposes. This target is the default.
+# dev:
+#   virtual:
+#     mode: development
+#     presets:
+#       name_prefix: '[DAIWT-${workspace.current_user.short_name}]'
+#       source_linked_deployment: true  
+#     default: true
+#     variables:
+#       schema_name: virtual_event
+#     run_as:
+#       user_name: frank.munz@databricks.com

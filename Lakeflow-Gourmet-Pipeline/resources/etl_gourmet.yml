@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=../bundle_config_schema.json
+
+resources: 
+  pipelines:
+    marketing-campaign-pipeline:
+      name: marketing-campaign-pipeline
+      root_path: ../src/marketing-campaign-pipeline/
+      libraries:
+        - glob:
+            include: ../src/marketing-campaign-pipeline/transformations/**
+      serverless: true
+      development: false
+      catalog: ${var.catalog_name}
+      schema: ${var.schema_name}
+      photon: true
+      channel: PREVIEW
