@@ -1,4 +1,4 @@
-![Marketing Campaign Pipeline](https://raw.githubusercontent.com/databricks/tmm/refs/heads/main/Lakeflow-Gourmet-Pipeline/misc/marketing_campaign_header.jpg)
+![Marketing Campaign Pipeline](misc/marketing_campaign_pipeline.png)
 
 
 
@@ -20,9 +20,8 @@ The asset bundle is designed to be deployed and run entirely from the Databricks
 1.  **Clone the Git Repository into your Workspace**:
     *   Navigate to **Workspace** in the sidebar.
     *   Click the **Create** button and select **Git folder**.
-    *   In the "Create Git folder" dialog, paste the URL `https://github.com/databricks/tmm` of the Git repository.
+    *   In the "Create Git folder" dialog, paste the URL.
     *   Select your Git provider (e.g., GitHub).
-    *   Enable **Sparse checkout mode** and specify the path to this specific project folder ```Lakeflow-Gourmet-Pipeline``` within the repository. This ensures you only clone the relevant project files.
     *   Click **Create Git folder**. The repository will be cloned into your workspace.
 
 
@@ -111,7 +110,7 @@ The core of this project is a multi-task workflow that ingests campaign, event, 
 
 - Make sure you have the right parameters set in ```databricks.yml``` in particular DWH ID, catalog and schema name.
 - If you deploy to a different catalog/schema you need to adjust the SQL in the dashboard yml file for catalog and schema since this cannot be parametrized yet. 
-- Note: To keep the demo as flexible as possible and remove the requirement to have actual external connections, we use endpoint stubs for the data providers and sample data from `samples.bakehouse` catalog.
+- Note: To keep the demo as flexible as possible and remove the requirement to have actual external connections, we use endpoint stubs for the data providers.
 
 
 ---

@@ -3,7 +3,7 @@
 resources:
   dashboards:
     marketing_campaign_dashboard:
-      display_name: "Marketing Campaign Analytics: Real-time Performance + AI-Generated Content"
+      display_name: "Marketing Campaign Analytics"
       file_path: ../src/aibi_dashboard.json
       warehouse_id: ${var.prod_warehouse_id}
       

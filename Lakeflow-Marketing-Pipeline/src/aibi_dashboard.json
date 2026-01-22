@@ -520,9 +520,11 @@
             "name": "efe03611",
             "multilineTextboxSpec": {
               "lines": [
+                "![Marketing Campaign Header](https://raw.githubusercontent.com/databricks/tmm/refs/heads/main/Lakeflow-Marketing-Pipeline/misc/marketing_campaign_header.png)\n",
+                "",
                 "# Marketing Campaign Analytics Dashboard\n",
                 "",
-                "Real-time campaign performance tracking with AI-generated personalized content across industries and geographies.",
+                "## Real-time campaign performance tracking with AI-generated personalized content across industries and geographies.",
                 ""
               ]
             }
@@ -531,7 +533,7 @@
             "x": 0,
             "y": 0,
             "width": 6,
-            "height": 5
+            "height": 7
           }
         }
       ],
