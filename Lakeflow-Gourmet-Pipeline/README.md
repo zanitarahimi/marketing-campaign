@@ -1,4 +1,4 @@
-![Marketing Campaign Pipeline](https://raw.githubusercontent.com/databricks/tmm/refs/heads/main/Lakeflow-Gourmet-Pipeline/misc/gourmet_header.jpg)
+![Marketing Campaign Pipeline](https://raw.githubusercontent.com/databricks/tmm/refs/heads/main/Lakeflow-Gourmet-Pipeline/misc/marketing_campaign_header.jpg)
 
 
 
@@ -8,7 +8,6 @@ Marketing teams struggle with fragmented campaign data spread across multiple sy
 
 The new Lakeflow Marketing Campaign Pipeline solves these challenges! It provides an automated, end-to-end analytics platform that ingests campaign data, events, customer interactions, and prospect information with Lakeflow Connect, transforms them for analysis with Lakeflow Spark Declarative Pipelines, enriches campaign copy using LLMs and AI functions, and visualizes results on a real-time dashboard.
 
-![Marketing Campaign Analytics](https://raw.githubusercontent.com/databricks/tmm/refs/heads/main/Lakeflow-Gourmet-Pipeline/misc/animated.gif)
 
 This project demonstrates a complete data engineering workflow using Databricks Asset Bundles. It covers everything from initial data ingestion to the final business intelligence dashboard served via Databricks One, providing a practical example of CI/CD and infrastructure-as-code for the Databricks Data Intelligence Platform.
 

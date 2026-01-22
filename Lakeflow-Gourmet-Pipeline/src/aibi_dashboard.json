@@ -520,11 +520,10 @@
             "name": "efe03611",
             "multilineTextboxSpec": {
               "lines": [
-                "# Marketing Campaign Analytics Dashboard",
+                "# Marketing Campaign Analytics Dashboard\n",
                 "",
                 "Real-time campaign performance tracking with AI-generated personalized content across industries and geographies.",
-                "",
-                "**Powered by:** Databricks Lakeflow + Claude 3.7 Sonnet"
+                ""
               ]
             }
           },
