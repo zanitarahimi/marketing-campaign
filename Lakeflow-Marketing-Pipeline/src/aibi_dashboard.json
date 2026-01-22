@@ -520,7 +520,7 @@
             "name": "efe03611",
             "multilineTextboxSpec": {
               "lines": [
-                "![Marketing Campaign Header](https://e2-demo-field-eng.azuredatabricks.net/ajax-api/2.0/fs/files/Volumes/zanita_rahimi/marketing_campaigns/misc/marketing_campaign_header.png)\n",
+                "![Marketing Campaign Header](https://e2-demo-field-eng.cloud.databricks.com/ajax-api/2.0/fs/files/Volumes/zanita_rahimi/marketing_campaigns/misc/marketing_campaign_header.png)\n",
                 "",
                 "# Marketing Campaign Analytics Dashboard\n",
                 "",
