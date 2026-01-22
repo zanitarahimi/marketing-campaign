@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=../bundle_config_schema.json
+
+resources: 
+  pipelines:
+    lf-connect-prospects:
+      name: lf-connect-prospects
+      root_path: ../src/lf-connect-prospects
+      libraries:
+        - glob:
+            include: ../src/lf-connect-prospects/transformations/**
+      serverless: true
+      development: false
+      catalog: ${var.catalog_name}
+      schema: ${var.schema_name}
+      photon: true
+      channel: PREVIEW

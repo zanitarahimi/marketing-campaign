@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../bundle_config_schema.json
+
+resources:
+  dashboards:
+    marketing_campaign_dashboard:
+      display_name: "Marketing Campaign Analytics: Real-time Performance + AI-Generated Content"
+      file_path: ../src/aibi_dashboard.json
+      warehouse_id: ${var.prod_warehouse_id}
+      

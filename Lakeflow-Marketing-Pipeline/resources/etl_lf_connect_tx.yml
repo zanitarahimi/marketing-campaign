@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=../bundle_config_schema.json
+
+resources: 
+  pipelines:
+    lf-connect-feedback:
+      name: lf-connect-feedback
+      root_path: ../src/lf-connect-feedback
+      libraries:
+        - glob:
+            include: ../src/lf-connect-feedback/transformations/**
+      serverless: true
+      development: false
+      catalog: ${var.catalog_name}
+      schema: ${var.schema_name}
+      photon: true
+      channel: PREVIEW
