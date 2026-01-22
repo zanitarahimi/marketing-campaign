@@ -1,4 +1,5 @@
-![Marketing Campaign Pipeline](/Volumes/zanita_rahimi/marketing_campaigns/misc/marketing_campaign_pipeline.png)
+![Marketing Campaign Pipeline](https://e2-demo-field-eng.cloud.databricks.com/ajax-api/2.0/fs/files/Volumes/zanita_rahimi/marketing_campaigns/misc/marketing_campaign_pipeline.png
+)
 
 
 
