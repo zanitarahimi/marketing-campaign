@@ -1,4 +1,4 @@
-![Marketing Campaign Pipeline](misc/marketing_campaign_pipeline.png)
+![Marketing Campaign Pipeline](/Volumes/zanita_rahimi/marketing_campaigns/misc/marketing_campaign_pipeline.png)
 
 
 
