@@ -20,7 +20,7 @@ COMMENT
     'Generates personalized, localized marketing campaign copy for B2B tech marketing campaigns.
 
     Returns: 3-sentence campaign description formatted as:
-    1. How Databricks addresses specific industry challenges and local market context
+    1. How this company addresses specific industry challenges and local market context
     2. Why decision-makers in this industry/location would benefit from this solution
     3. Call-to-action that resonates with local business culture and the engagement level
 
@@ -32,11 +32,11 @@ COMMENT
 RETURN 
   ai_query(
     'databricks-claude-3-7-sonnet',
-    'Create a B2B marketing campaign description for Databricks targeting the ' || industry || 
+    'Create a B2B marketing campaign description for the company in the ' || industry || 
     ' industry in ' || city || ', ' || country || 
     '. The original subject line was: "' || subject_line || 
     '". The campaign has an engagement score of ' || CAST(engagement_score AS STRING) || 
-    ' out of 100. Format: First sentence - Describe how Databricks and data intelligence addresses specific challenges in the ' || industry ||
+    ' out of 100. Format: First sentence - Describe how their product addresses specific challenges in the ' || industry ||
     ' industry and connects to the local business environment in ' || city || '. ' ||
     'Second sentence - Explain why decision-makers and technical leaders in this industry and location would benefit from this solution, considering their specific business drivers and regulatory environment. ' ||
     'Third sentence - Create a compelling call-to-action that resonates with the local business culture and reflects the campaign engagement level (higher scores deserve more premium positioning). ' ||

@@ -248,6 +248,33 @@
                     "displayName": "clicks_per_dollar"
                   },
                   {
+                    "fieldName": "sentiment",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "string",
+                    "displayAs": "string",
+                    "visible": true,
+                    "order": 10,
+                    "title": "Customer Feedback",
+                    "allowSearch": false,
+                    "alignContent": "left",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false,
+                    "displayName": "sentiment"
+                  },
+                  {
                     "fieldName": "ai_generated_copy",
                     "booleanValues": [
                       "false",
@@ -265,7 +292,7 @@
                     "displayAs": "string",
                     "visible": true,
                     "order": 6,
-                    "title": "AI-Enhanced Copy (Future Use)",
+                    "title": "Future Campaign",
                     "allowSearch": false,
                     "alignContent": "left",
                     "allowHTML": false,
@@ -354,33 +381,6 @@
                     "useMonospaceFont": false,
                     "preserveWhitespace": false,
                     "displayName": "ai_copy_fr"
-                  },
-                  {
-                    "fieldName": "sentiment",
-                    "booleanValues": [
-                      "false",
-                      "true"
-                    ],
-                    "imageUrlTemplate": "{{ @ }}",
-                    "imageTitleTemplate": "{{ @ }}",
-                    "imageWidth": "",
-                    "imageHeight": "",
-                    "linkUrlTemplate": "{{ @ }}",
-                    "linkTextTemplate": "{{ @ }}",
-                    "linkTitleTemplate": "{{ @ }}",
-                    "linkOpenInNewTab": true,
-                    "type": "string",
-                    "displayAs": "string",
-                    "visible": true,
-                    "order": 10,
-                    "title": "Historical Customer Feedback",
-                    "allowSearch": false,
-                    "alignContent": "left",
-                    "allowHTML": false,
-                    "highlightLinks": false,
-                    "useMonospaceFont": false,
-                    "preserveWhitespace": false,
-                    "displayName": "sentiment"
                   }
                 ]
               },
