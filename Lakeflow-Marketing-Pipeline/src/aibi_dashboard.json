@@ -467,45 +467,47 @@
               {
                 "name": "main_query",
                 "query": {
-                  "datasetName": "1375151d",
+                  "datasetName": "5b810f29",
                   "fields": [
                     {
-                      "name": "clicks_per_dollar",
-                      "expression": "`clicks_per_dollar`"
+                      "name": "sum(clicks_per_dollar)",
+                      "expression": "SUM(`clicks_per_dollar`)"
                     },
                     {
                       "name": "Country",
                       "expression": "`Country`"
-                    },
-                    {
-                      "name": "Industry",
-                      "expression": "`Industry`"
                     }
                   ],
-                  "disaggregated": true
+                  "disaggregated": false
                 }
               }
             ],
             "spec": {
-              "version": 3,
+              "version": 1,
               "widgetType": "choropleth-map",
               "encodings": {
-                "region": {
-                  "fieldName": "Country",
-                  "displayName": "Country"
-                },
                 "color": {
-                  "fieldName": "clicks_per_dollar",
+                  "fieldName": "sum(clicks_per_dollar)",
                   "scale": {
-                    "type": "quantitative"
-                  },
-                  "displayName": "ROI (Clicks/$)"
+                    "type": "quantitative",
+                    "colorRamp": {
+                      "mode": "scheme",
+                      "scheme": "magma"
+                    },
+                    "reverse": true
+                  }
+                },
+                "region": {
+                  "regionType": "mapbox-v4-admin",
+                  "admin0": {
+                    "fieldName": "Country",
+                    "type": "field",
+                    "geographicRole": "admin0-unit-code"
+                  }
                 }
               },
-              "frame": {
-                "title": "Campaign ROI by Country and Industry",
-                "showTitle": true,
-                "showDescription": false
+              "mark": {
+                "opacity": 1
               }
             }
           },
