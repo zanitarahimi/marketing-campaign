@@ -34,9 +34,9 @@ GROUP BY CampaignId;
 CREATE OR REPLACE TABLE top_campaigns_with_ai AS
 SELECT
   t.*,  -- Selects all original columns from the source table
-  -- ai_translate(t.ai_generated_copy, 'es') AS ai_copy_es,
+  ai_translate(t.ai_generated_copy, 'es') AS ai_copy_es,
   ai_translate(t.ai_generated_copy, 'de') AS ai_copy_de,
-  -- ai_translate(t.ai_generated_copy, 'fr') AS ai_copy_fr,
+  ai_translate(t.ai_generated_copy, 'fr') AS ai_copy_fr,
   COALESCE(f.sentiment_score, 0) AS customer_sentiment_score,
   COALESCE(f.feedback_count, 0) AS feedback_count,
   CASE 
