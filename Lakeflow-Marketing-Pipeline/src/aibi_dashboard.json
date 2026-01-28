@@ -476,6 +476,10 @@
                     {
                       "name": "Country",
                       "expression": "`Country`"
+                    },
+                    {
+                      "name": "Industry",
+                      "expression": "`Industry`"
                     }
                   ],
                   "disaggregated": false
@@ -499,10 +503,17 @@
                     "type": "quantitative"
                   },
                   "displayName": "Avg ROI (Clicks/$)"
+                },
+                "color": {
+                  "fieldName": "Industry",
+                  "scale": {
+                    "type": "categorical"
+                  },
+                  "displayName": "Industry"
                 }
               },
               "frame": {
-                "title": "Campaign ROI by Country",
+                "title": "Campaign ROI by Country and Industry",
                 "showTitle": true,
                 "showDescription": false
               }
