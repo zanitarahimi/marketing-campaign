@@ -490,25 +490,16 @@
               "version": 3,
               "widgetType": "symbol-map",
               "encodings": {
-                "location": {
+                "geo": {
                   "fieldName": "Country",
-                  "scale": {
-                    "type": "categorical"
-                  },
                   "displayName": "Country"
                 },
                 "size": {
                   "fieldName": "clicks_per_dollar",
-                  "scale": {
-                    "type": "quantitative"
-                  },
                   "displayName": "ROI (Clicks/$)"
                 },
                 "color": {
                   "fieldName": "Industry",
-                  "scale": {
-                    "type": "categorical"
-                  },
                   "displayName": "Industry"
                 }
               },
