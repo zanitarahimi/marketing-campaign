@@ -508,6 +508,10 @@
               },
               "mark": {
                 "opacity": 1
+              },
+              "frame": {
+                "title": "Campaign ROI by Country and Industry",
+                "showTitle": true
               }
             }
           },
