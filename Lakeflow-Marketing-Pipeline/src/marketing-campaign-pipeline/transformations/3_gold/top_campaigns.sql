@@ -26,7 +26,6 @@ FROM campaign_performance cp
 WHERE 
   cp.Industry IS NOT NULL
   AND cp.Country IS NOT NULL
-  AND cp.emails_sent > 100  -- Filter out test campaigns
 ORDER BY 
   engagement_score DESC,
   cp.clicks_per_dollar DESC
