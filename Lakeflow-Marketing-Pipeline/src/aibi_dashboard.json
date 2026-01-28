@@ -488,19 +488,18 @@
             ],
             "spec": {
               "version": 3,
-              "widgetType": "symbol-map",
+              "widgetType": "choropleth-map",
               "encodings": {
-                "geo": {
+                "region": {
                   "fieldName": "Country",
                   "displayName": "Country"
                 },
-                "size": {
-                  "fieldName": "clicks_per_dollar",
-                  "displayName": "ROI (Clicks/$)"
-                },
                 "color": {
-                  "fieldName": "Industry",
-                  "displayName": "Industry"
+                  "fieldName": "clicks_per_dollar",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "ROI (Clicks/$)"
                 }
               },
               "frame": {
