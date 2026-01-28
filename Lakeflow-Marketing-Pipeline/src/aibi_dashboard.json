@@ -470,8 +470,8 @@
                   "datasetName": "1375151d",
                   "fields": [
                     {
-                      "name": "avg(clicks_per_dollar)",
-                      "expression": "AVG(`clicks_per_dollar`)"
+                      "name": "clicks_per_dollar",
+                      "expression": "`clicks_per_dollar`"
                     },
                     {
                       "name": "Country",
@@ -482,7 +482,7 @@
                       "expression": "`Industry`"
                     }
                   ],
-                  "disaggregated": false
+                  "disaggregated": true
                 }
               }
             ],
@@ -498,11 +498,11 @@
                   "displayName": "Country"
                 },
                 "size": {
-                  "fieldName": "avg(clicks_per_dollar)",
+                  "fieldName": "clicks_per_dollar",
                   "scale": {
                     "type": "quantitative"
                   },
-                  "displayName": "Avg ROI (Clicks/$)"
+                  "displayName": "ROI (Clicks/$)"
                 },
                 "color": {
                   "fieldName": "Industry",
