@@ -48,5 +48,5 @@ SELECT
 FROM
   top_campaigns_with_ai t
 LEFT JOIN
-  campaign_feedback_sentiment f ON t.CampaignId = f.CampaignId;
+  campaign_feedback_sentiment f ON t.CampaignId = f.CampaignId
 WHERE t.ai_generated_copy IS NOT NULL;
