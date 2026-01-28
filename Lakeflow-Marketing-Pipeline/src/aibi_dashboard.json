@@ -488,16 +488,16 @@
             ],
             "spec": {
               "version": 3,
-              "widgetType": "bar",
+              "widgetType": "symbol-map",
               "encodings": {
-                "x": {
+                "location": {
                   "fieldName": "Country",
                   "scale": {
                     "type": "categorical"
                   },
                   "displayName": "Country"
                 },
-                "y": {
+                "size": {
                   "fieldName": "avg(clicks_per_dollar)",
                   "scale": {
                     "type": "quantitative"
