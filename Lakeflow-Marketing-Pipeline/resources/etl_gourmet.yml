@@ -14,3 +14,5 @@ resources:
       schema: ${var.schema_name}
       photon: true
       channel: PREVIEW
+      configuration:
+        pipelines.numUpdateRetryAttempts: "0"
